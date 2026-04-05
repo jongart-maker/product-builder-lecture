@@ -23,12 +23,13 @@ class LottoNumbers extends HTMLElement {
           align-items: center;
           width: 50px;
           height: 50px;
-          background-color: #f0f0f0;
+          background-color: var(--number-bg, #f0f0f0);
           border-radius: 50%;
           margin: 0.5rem;
           font-size: 1.2rem;
           font-weight: bold;
-          color: #333;
+          color: var(--text-color, #333);
+          transition: background-color 0.3s, color 0.3s;
         }
       </style>
       <div class="lotto-numbers-wrapper">
@@ -57,11 +58,33 @@ function generateLottoNumbers() {
         const randomNumber = Math.floor(Math.random() * 45) + 1;
         numbers.add(randomNumber);
     }
-    return Array.from(numbers);
+    return Array.from(numbers).sort((a, b) => a - b);
 }
 
 document.getElementById('generate-btn').addEventListener('click', () => {
     const lottoNumbers = generateLottoNumbers();
     const lottoNumbersContainer = document.getElementById('lotto-numbers-container');
     lottoNumbersContainer.innerHTML = `<lotto-numbers numbers='${JSON.stringify(lottoNumbers)}'></lotto-numbers>`;
+});
+
+// Theme Toggle Logic
+const themeToggle = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('theme') || 'light';
+
+if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = 'Light Mode';
+}
+
+themeToggle.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = 'Dark Mode';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = 'Light Mode';
+    }
 });
