@@ -5,6 +5,8 @@
     --btn-bg: #007bff;
     --btn-hover: #0056b3;
     --number-bg: #f0f0f0;
+    --input-bg: #ffffff;
+    --input-border: #ccc;
 }
 
 [data-theme="dark"] {
@@ -14,6 +16,8 @@
     --btn-bg: #375a7f;
     --btn-hover: #2b4764;
     --number-bg: #444;
+    --input-bg: #3d3d3d;
+    --input-border: #555;
 }
 
 body {
@@ -35,6 +39,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     transition: background-color 0.3s;
+    width: 90%;
+    max-width: 500px;
 }
 
 #generate-btn {
@@ -72,4 +78,55 @@ body {
     border: 1px solid var(--text-color);
     background: transparent;
     color: var(--text-color);
+}
+
+.divider {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid var(--input-border);
+}
+
+.contact-section {
+    text-align: left;
+}
+
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#submit-btn:hover {
+    background-color: var(--btn-hover);
 }
