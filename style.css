@@ -130,3 +130,13 @@ body {
 #submit-btn:hover {
     background-color: var(--btn-hover);
 }
+
+.comments-section {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.comments-section h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
